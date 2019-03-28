@@ -23,6 +23,7 @@
     "nodemon": "^1.17.4",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^5.2.1",
     "sequelize-typescript": "^1.0.0-alpha.9",
     "uuid": "^3.3.2"

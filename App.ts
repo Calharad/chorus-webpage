@@ -1,13 +1,17 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import { Sequelize } from "sequelize-typescript";
 
 class App {
     public express : express.Express;
+
+    public sequelize: Sequelize;
     constructor() {
         this.express = express();
         this.express.use(bodyParser.urlencoded({ extended: false }));
         this.express.use(bodyParser.json());
         this.mountRoutes();
+        this.connectDatabase();
     }
 
     private mountRoutes() : void {
@@ -19,6 +23,21 @@ class App {
             })
         })
         this.express.use('/', router);
+    }
+
+    private connectDatabase() {
+        let sequelize = new Sequelize({
+            database: 'chorus',
+            dialect: 'postgres',
+            username: 'mmm',
+            password: 'mmm',
+        });
+        
+        sequelize.addModels([__dirname + '/src/models']);
+
+        sequelize.sync();
+        
+        this.sequelize = sequelize;
     }
 }
 

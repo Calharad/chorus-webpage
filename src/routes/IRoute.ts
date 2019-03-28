@@ -8,7 +8,7 @@ abstract class IRoute {
     readonly _route: string;
 
     addGetRoute(router: Router) : Router {
-        
+        let x = 0;
         return router.get(this._route, (req, res)=>this.sendMessage(req, res));
     }
 
