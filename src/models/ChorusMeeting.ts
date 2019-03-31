@@ -1,6 +1,9 @@
-import {Column, Model, HasMany} from "sequelize-typescript";
+import {Column, Model, HasMany, Table} from "sequelize-typescript";
 import { UserPresence } from "./UserPresence";
 
+@Table({
+    timestamps: false
+})
 export class ChorusMeeting extends Model<ChorusMeeting> {
 
     @Column

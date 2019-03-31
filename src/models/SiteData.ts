@@ -1,18 +1,21 @@
-import {Column, Model, HasMany, ForeignKey, BelongsTo, AllowNull, PrimaryKey} from "sequelize-typescript";
+import {Column, Model, ForeignKey, BelongsTo, AllowNull, PrimaryKey, Table} from "sequelize-typescript";
 import { Photo } from "./Photo";
 
+@Table({
+    timestamps: false
+})
 export class SiteData extends Model<SiteData> {
 
-    @Column
     @PrimaryKey
+    @Column
     name: string;
 
     @Column
     text: string;
 
     @ForeignKey(() => Photo)
-    @Column
     @AllowNull(true)
+    @Column
     photoId: number;
 
     @BelongsTo(() => Photo)

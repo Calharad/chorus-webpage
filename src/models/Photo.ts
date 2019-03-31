@@ -1,15 +1,18 @@
-import {Column, Model, HasMany, ForeignKey, BelongsTo, AllowNull} from "sequelize-typescript";
+import {Column, Model, HasMany, ForeignKey, BelongsTo, AllowNull, Table} from "sequelize-typescript";
 import { Gallery } from "./Gallery";
 import { Article } from "./Article";
 import { SiteData } from "./SiteData";
 
+@Table({
+    timestamps: false
+})
 export class Photo extends Model<Photo>
 {
     @Column
     src: string;
 
-    @Column
     @AllowNull(true)
+    @Column
     desc: string;
 
     @ForeignKey(() => Gallery)

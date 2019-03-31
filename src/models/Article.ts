@@ -1,8 +1,11 @@
-import {Column, Model, HasMany, BelongsTo, ForeignKey, AllowNull} from "sequelize-typescript";
+import {Column, Model, BelongsTo, ForeignKey, AllowNull, Table} from "sequelize-typescript";
 import { User } from "./User";
 import { Photo } from "./Photo";
 import { Gallery } from "./Gallery";
 
+@Table({
+    timestamps: false
+})
 export class Article extends Model<Article> {
 
     @Column
@@ -22,16 +25,16 @@ export class Article extends Model<Article> {
     user: User;
 
     @ForeignKey(() => Photo)
-    @Column
     @AllowNull(true)
+    @Column
     photoId: number;
 
     @BelongsTo(() => Photo)
     photo: Photo;
 
     @ForeignKey(() => Gallery)
-    @Column
     @AllowNull(true)
+    @Column
     galleryId: number;
 
     @BelongsTo(() => Gallery)

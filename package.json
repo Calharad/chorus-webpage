@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "cd client && npm start",
-    "server": "tsc index.ts --outDir dist && npm run-script run-server",
+    "server": "tsc && npm run-script run-server",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "run-server": "nodemon dist/index.js"
   },

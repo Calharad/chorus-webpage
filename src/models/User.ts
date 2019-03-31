@@ -3,7 +3,9 @@ import { UserType } from "./UserType";
 import { UserPresence } from "./UserPresence";
 import { Article } from "./Article";
 
-@Table
+@Table({
+    timestamps: false
+})
 export class User extends Model<User> {
 
     @Column
@@ -18,8 +20,8 @@ export class User extends Model<User> {
     @Column
     joinDate: Date;
 
-    @Column
     @AllowNull(true)
+    @Column
     quitDate: Date;
 
     @Column({

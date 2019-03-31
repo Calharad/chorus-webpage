@@ -1,7 +1,10 @@
-import {Column, Model, HasMany, ForeignKey, BelongsTo, AllowNull} from "sequelize-typescript";
+import {Column, Model, HasMany, ForeignKey, BelongsTo, Table} from "sequelize-typescript";
 import { SampleType } from "./SampleType";
 import { Song } from "./Song";
 
+@Table({
+    timestamps: false
+})
 export class Sample extends Model<Sample> {
 
     @Column

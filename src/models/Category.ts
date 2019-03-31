@@ -1,13 +1,16 @@
-import {Column, Model, HasMany, ForeignKey, BelongsTo, AllowNull} from "sequelize-typescript";
+import {Column, Model, HasMany, AllowNull, Table} from "sequelize-typescript";
 import { SongCategory } from "./SongCategory";
 
+@Table({
+    timestamps: false
+})
 export class Category extends Model<Category> {
 
     @Column
     name: string;
 
-    @Column
     @AllowNull(true)
+    @Column
     desc: string;
 
     @HasMany(() => SongCategory)

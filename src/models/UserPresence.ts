@@ -1,7 +1,10 @@
 import { User } from "./User";
-import { Column, Model, BelongsTo, ForeignKey } from "sequelize-typescript";
+import { Column, Model, BelongsTo, ForeignKey, Table } from "sequelize-typescript";
 import { ChorusMeeting } from "./ChorusMeeting";
 
+@Table({
+    timestamps: false
+})
 export class UserPresence extends Model<UserPresence> {
     
     @Column

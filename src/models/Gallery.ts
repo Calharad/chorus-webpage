@@ -1,7 +1,10 @@
-import { Model, Column, HasMany } from "sequelize-typescript";
+import { Model, Column, HasMany, Table } from "sequelize-typescript";
 import { Photo } from "./Photo";
 import { Article } from "./Article";
 
+@Table({
+    timestamps: false
+})
 export class Gallery extends Model<Gallery> {
 
     @Column

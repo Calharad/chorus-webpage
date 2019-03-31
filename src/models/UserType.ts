@@ -1,7 +1,10 @@
-import {Column, Model, BelongsTo, ForeignKey} from "sequelize-typescript";
+import {Column, Model, BelongsTo, ForeignKey, Table} from "sequelize-typescript";
 import { User } from "./User";
 import { Type } from "./Type";
 
+@Table({
+    timestamps: false
+})
 export class UserType extends Model<UserType> {
 
     @ForeignKey(() => User) 

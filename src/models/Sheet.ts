@@ -1,13 +1,16 @@
-import {Column, Model, HasMany, ForeignKey, BelongsTo, AllowNull} from "sequelize-typescript";
+import {Column, Model, ForeignKey, BelongsTo, AllowNull, Table} from "sequelize-typescript";
 import { Song } from "./Song";
 
+@Table({
+    timestamps: false
+})
 export class Sheet extends Model<Sheet> {
 
     @Column
     name: string;
 
-    @Column
     @AllowNull(true)
+    @Column
     desc: string;
 
     @ForeignKey(() => Song)

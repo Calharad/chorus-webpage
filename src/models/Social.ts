@@ -1,5 +1,8 @@
-import {Column, Model, AllowNull} from "sequelize-typescript";
+import {Column, Model, AllowNull, Table} from "sequelize-typescript";
 
+@Table({
+    timestamps: false
+})
 export class Social extends Model<Social> {
 
     @Column({
@@ -10,8 +13,8 @@ export class Social extends Model<Social> {
     @Column
     link: string;
 
-    @Column
     @AllowNull(true)
+    @Column
     comment: string;
     
 }
