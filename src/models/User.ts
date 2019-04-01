@@ -6,10 +6,13 @@ import { Article } from "./Article";
 @Table({
     timestamps: false
 })
-export class User extends Model<User> {
+export default class User extends Model<User> {
 
     @Column
     username: string;
+
+    @Column
+    active: boolean;
 
     @Column
     firstName: string;
@@ -19,10 +22,6 @@ export class User extends Model<User> {
 
     @Column
     joinDate: Date;
-
-    @AllowNull(true)
-    @Column
-    quitDate: Date;
 
     @Column({
         comment: "HeadAdmin: v|1, Admin v|2, Reporter v|4, Musician v|8"
@@ -43,4 +42,14 @@ export class User extends Model<User> {
     @HasMany(() => Article)
     articles: Article[];
     
+}
+
+export class LoginData {
+    constructor(login: string, passwd: string) {
+        this.login = login;
+        this.password = passwd;
+    }
+
+    readonly login: string;
+    readonly password: string;
 }

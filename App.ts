@@ -1,6 +1,8 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { Sequelize } from "sequelize-typescript";
+import { Sequelize, DataType } from "sequelize-typescript";
+import { Article } from "./src/models/Article";
+import { Category } from "./src/models/Category";
 
 class App {
     public express : express.Express;
@@ -26,6 +28,11 @@ class App {
     }
 
     private connectDatabase() {
+
+        DataType.DATE.prototype._stringify = function _stringify(date, options) {
+            return this._applyTimezone(date, options).format('YYYY-MM-DD HH:mm:ss.SSS');
+          };
+
         let sequelize = new Sequelize({
             database: 'chorus',
             dialect: 'postgres',
